@@ -15,8 +15,9 @@ let host = argv.host || localhost
 let port = argv.port || (host===localhost?8000:80)
 let destinationUrl = argv.url || url.format({
 					protocol: 'http',
-					host: host,
-					port: port});
+					host,
+					//port 	<< why this not work \/
+					}) +':'+ port; 					//	| Have to do this
 
 console.log(process.argv);
 console.log(argv);
@@ -45,7 +46,7 @@ let proxyServer = http.createServer((req, res) => {
 		url = 'http://' + req.headers['x-destination-url'];
 		delete forwardHeaders['x-destination-url'];
 	}
-	logStream.write('Forward to url: ' + url);
+	logStream.write('Forward to url: ' + url +'\n');
 	let options = {
 		headers: req.forwardHeaders,
 		url: url + req.url,
