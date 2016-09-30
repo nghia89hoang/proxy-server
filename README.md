@@ -2,7 +2,7 @@
 
 This is a Proxy Server for Node.js submitted as the [pre-work](http://courses.codepath.com/snippets/intro_to_nodejs/prework) requirement for CodePath.
 
-Time spent: 6h
+Time spent: 4h (maybe)
 
 Completed:
 
@@ -20,7 +20,7 @@ Completed:
 Walkthrough Gif:
 [Add walkthrough.gif to the project root]
 
-![Video Walkthrough](walkthrough.gif)
+![Video Walkthrough](demo.gif)
 
 Note: to embed the gif file, just check your gif file into your repo and update the name of the file above.
 
@@ -65,7 +65,7 @@ hello self
 
 ### Proxy Server:
 
-Port 8001 will proxy to the echo server on port 8000.
+Port 9000 will proxy to the echo server on port 8000.
 
 ```bash
 curl -v http://127.0.0.1:8001/asdf -d "hello proxy"
