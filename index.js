@@ -52,8 +52,12 @@ let proxyServer = http.createServer((req, res) => {
 		url: url + req.url,
 		method: req.method
 	};
-	req.pipe(request(options)).pipe(res);
+	let outboundReq = request(options);
+	req.pipe(outboundReq);
+	req.pipe(logStream);
+	outboundReq.pipe(res);
+	outboundReq.pipe(logStream);
 }).on('error', console.error);
 
 proxyServer.listen(9000);
-console.log('Proxy server listening @ 127.0.0.1:9000');
+console.log('Proxy server listening @ 127.0.0.1:9000'); 
